@@ -28,7 +28,7 @@ with gzip.open('../Data/camion.csv.gz', 'rt') as f:
     for line in f:
         print(line, end = '')
 
-#%% Ejercicio 2.6       FUNCIONES(2.2) (buscar_precios.py)
+#%% Ejercicio 2.6       FUNCIONES(2.2) 
 def costo_camion(nombre_archivo):
     costoTotal = 0
     with open(nombre_archivo, 'rt') as file:
@@ -40,17 +40,17 @@ def costo_camion(nombre_archivo):
 costo = costo_camion('../Data/camion.csv')
 print('Costo total:', costo)
 
-#%% Ejercicio 2.7     FUNCIONES(2.3)
+#%% Ejercicio 2.7     FUNCIONES(2.3) (buscar_precios.py)
 def buscar_precio(fruta):
     f = open('../Data/precios.csv', 'rt')
-    next(f)
     for line in f:
         row = line.strip("\n").split(',')
-        if (row[0] == fruta):
+        if (row[0] == fruta.capitalize()):
             return print(f'El precio de la {fruta} es: ${row[1]}')   
     f.close()
     return print(f'{fruta} no figura en el listado de precios.')
-buscar_precio('Frambuesa')
+fruta = input('Porfavor ingrese la fruta o verdura que desea consultar:\n--> ')
+buscar_precio(fruta)
  
 #%% Ejercicio 2.8       ERRORES (costo_camion.py)
 def costo_camion(nombre_archivo):
