@@ -49,5 +49,5 @@ precio = 91.1
 a = f'{nombre:>10s} {cajones:10d} {precio:10.2f}'
 a
 # '   Naranja        100      91.10'
-b = f'Costo = ${cajones*precio:0.2f}'
+b = f'Costo = ${cajones*precio:0.2f}' #El signo pesos '$' es para que salga en el string no es por sintaxis
 # 'Costo = $9110.00'
