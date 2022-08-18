@@ -1,13 +1,12 @@
 # Ejercicio 3.1: Lista de tuplas
 import csv
-from pprint import pprint
 
 def leer_camion(nombre_archivo):
 	camion = []
 	
 	with open(nombre_archivo, 'rt') as f:
 		rows = csv.reader(f)
-		headers = next(rows)
+		next(rows)
 		for row in rows:
 			lote = {}
 			lote['nombre']=row[0]

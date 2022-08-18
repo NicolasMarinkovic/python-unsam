@@ -2,10 +2,23 @@
 
 #Podés verificar si una clave existe:
 d = {}
-if key in d:
+#if key in d:
     # YES
-else:
+#else:
     # NO
+    
+#Listas como contenedores
+#Us� listas cuando el orden de los datos importe. Acordate de que las listas pueden contener cualquier tipo de objeto. Por ejemplo, una lista de tuplas.
+
+camion = [
+    ('Pera', 100, 490.1),
+    ('Naranja', 50, 91.3),
+    ('Limon', 150, 83.44)
+]
+
+camion[0]            # ('Pera', 100, 490.1)
+camion[2]            # ('Limon', 150, 83.44)    
+
     
 #Claves compuestas
 
@@ -36,6 +49,9 @@ unicos = set(nombres)
 
 citricos.add('Banana')        # Agregar un elemento
 citricos.remove('Limon')    # Eliminar un elemento
+
+A=0
+B=0
 
 A | B                 # Unión de conjuntos A y B
 A & B                 # Intersección de conjuntos
