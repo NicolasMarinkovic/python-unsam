@@ -41,7 +41,7 @@ def balance_total():
 				precio_recaudado += precios[key] * camion['cajones']
 				
 	diferencia = precio_recaudado - costo_camion
-	print(f'El costo total del camion es: ${costo_camion}.\nLo que se recaudó con la venta fue: ${precio_recaudado}.')
+	print(f'El costo total del camión es: ${costo_camion}.\nLo que se recaudó con la venta fue: ${precio_recaudado}.')
 	if (diferencia > 0):
 		print(f'La ganancia es de ${diferencia:.2f}.')
 	else:
