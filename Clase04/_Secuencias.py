@@ -49,6 +49,7 @@ for i in s:
 
 # 		BREAK
 #Podés usar el comando break para romper un ciclo antes de tiempo.
+namelist = ''
 for name in namelist:
     if name == 'Juana':
         break
@@ -56,6 +57,7 @@ for name in namelist:
 
 
 # 		CONTINUE
+lines = ''
 #Para saltear un elemento y moverse al siguiente, usá el comando continue.
 for line in lines:
     if line == '\n':    # Salteo las instrucciones que procesan líneas
@@ -68,9 +70,11 @@ for line in lines:
 # range(). Sirve para iterar sobre un rango de números enteros,
 
 for i in range(100):
+    print(i)
     # i = 0,1,...,99
 # La sintaxis es range([comienzo,] fin [,paso])
 for k in range(10,50,2):
+    print(k)
     # k = 10,12,...,48
     # Observá que va de a dos.
 for n in range(10,0,-1):       # Contar 10 ... 1
@@ -79,8 +83,9 @@ for n in range(10,0,-1):       # Contar 10 ... 1
 
 # enumerate()
 # enumerate(secuencia [, start = 0]) (start es opcional)
-with open(nombre_archivo) as f:
+with open('nombre_archivo') as f:
     for nlinea, line in enumerate(f, start=1):
+        print(nlinea, line)
     # nlinea = 1, line = 'blabla'
     # nlinea = 2, line = 'blablab'
     # nlinea = 3, line = 'blablabla'
@@ -120,8 +125,25 @@ sorted(lista_precios)
 #[(23.45, 'Lima'), (34.23, 'Mandarina'), (91.1, 'Naranja'), (490.1, 'Pera')]
 
 
+# most_common(x)
+#Podés listar las tres frutas con mayores tenencias:
+camion = [
+    ('Pera', 100, 490.1),
+    ('Naranja', 50, 91.1),
+    ('Caqui', 150, 83.44),
+    ('Naranja', 100, 45.23),
+    ('Pera', 75, 572.45),
+    ('Lima', 50, 23.15)
+]
 
 
+from collections import Counter
+total_cajones = Counter()
+for nombre, n_cajones, precio in camion:
+    total_cajones[nombre] += n_cajones
+    
+total_cajones.most_common(3)
+#[('Pera', 175), ('Naranja', 150), ('Caqui', 150)]
 
 
 

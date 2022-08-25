@@ -1,20 +1,18 @@
-# hipoteca.py
+# costo_camion.py
 # Archivo de ejemplo
 # Ejercicio de hipoteca
 
-cadena = 'Geringoso'
-capadepenapa = ''
-for c in cadena:
-    capadepenapa += c
-    if c == 'a' or c =='A':
-        capadepenapa += 'pa'
-    elif c == 'e' or c =='E':
-        capadepenapa += 'pe'
-    elif c == 'i' or c =='I':
-        capadepenapa += 'pi'
-    elif c == 'o' or c =='O':
-        capadepenapa += 'po'
-    elif c == 'u' or c =='U': 
-        capadepenapa += 'pu'       
-
-print(capadepenapa)
+def costo_camion(nombre_archivo):
+    import csv
+    costoTotal = 0
+    with open(nombre_archivo, 'rt') as file:
+        rows = csv.reader(file)
+        next(rows)
+        for row in rows:
+            try:
+                costoTotal += int(row[1]) * float(row[2])
+            except ValueError:
+                print(f"Los datos están incompletos. Línea: {row}")
+    return costoTotal
+costo = costo_camion('../Data/camion.csv')
+print(f'Costo total: ${costo:.2f}')

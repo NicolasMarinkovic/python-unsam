@@ -12,7 +12,7 @@ def leer_camion(nombre_archivo):
                 falla = int(record['cajones']) * float(record['precio'])
                 camion.append(record)
             except:
-                print(f'Fila {n_fila}: No pude interpretar: {row}')
+                print(f'Fila {n_fila}: No pude interpretar: {row}. Archivo: {nombre_archivo}')
                 
     return camion
 	
@@ -26,28 +26,31 @@ def leer_precios(nombre_archivo):
 		try:
 			precio[row[0]] = float(row[1])
 		except:
-			print(f'Fila {n_fila}: No pude interpretar: {row}')
+			print(f'Fila {n_fila}: No pude interpretar: {row}. Archivo: {nombre_archivo}')
 	return precio
 	f.close()
 
-def balance_total():
-    costo_camion = 0.0
-    precio_recaudado = 0.0
+def hacer_informe(camiones,precios):
+    informe = []
     
     for camion in camiones:
-        costo_camion +=  int(camion['cajones']) * float(camion['precio'])
         for key in precios:
             if (key == camion['nombre']):
-                precio_recaudado += precios[key] * int(camion['cajones'])
-				
-    diferencia = precio_recaudado - costo_camion
-    print(f'El costo total del camión es: ${costo_camion}.\nLo que se recaudó con la venta fue: ${precio_recaudado}.')
-    if (diferencia > 0):
-        print(f'La ganancia es de ${diferencia:.2f}.')
-    else:
-        print(f'La pérdida es de ${diferencia * -1:.2f}.')
+                diferencia = precios[key] - float(camion['precio'])
+                s = (camion['nombre'], int(camion['cajones']),
+                     float(camion['precio']), float(diferencia))
+                informe.append(s)
+                
+    return informe
 
-camiones = leer_camion('../Data/missing.csv')
+def imprimir_informe(informe):
+    headers = ('Nombre', 'Cajones', 'Precio', 'Cambio')
+    print(f'{headers[0]:>10s} {headers[1]:>10s} {headers[2]:>10s} {headers[3]:>10s}')
+    print('---------- ---------- ---------- ----------')
+    for nombre, cajones, precio, cambio in informe:
+        print(f'{nombre:>10s} {cajones:>10d} %2s ${precio:>6.2f} {cambio:>10.2f}' % '')
+
+camiones = leer_camion('../Data/camion.csv')
 precios = leer_precios('../Data/precios.csv')
-balance_total()
-
+informe = hacer_informe(camiones, precios)
+imprimir_informe(informe)

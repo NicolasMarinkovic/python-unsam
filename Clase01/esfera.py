@@ -9,5 +9,5 @@
 import math
 radio = input("Ingresa el radio de la esfera: ")
 
-volumen = 4/3 * math.pi * (radio ** 3)
-print(volumen)
+volumen = 4/3 * math.pi * (int(radio) ** 3)
+print(round(volumen))
