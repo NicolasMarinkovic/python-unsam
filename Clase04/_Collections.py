@@ -32,11 +32,13 @@ total_cajones.most_common(3)
 # ------
 # Dos tenencias se pueden sumar por ej
 
-tenencias
+total_cajones
 #Counter({'Caqui': 150, 'Durazno': 95, 'Lima': 100, 'Mandarina': 250, 'Naranja': 150})
-tenencias2
+
+#total_cajones2
 #Counter({'Frambuesa': 250, 'Durazno': 125, 'Lima': 50, 'Mandarina': 25})
-combinada = tenencias + tenencias2
+
+#combinada = total_cajones + tenencias2
 
 #Counter({'Caqui': 150, 'Durazno': 220, 'Frambuesa': 250, 'Lima': 150, 'Mandarina': 275, 'Naranja': 150})
 
