@@ -40,4 +40,7 @@ def minimo(lista):
         return m    
     raise Exception(f"Perdón, la lista no puede ser vacía! -> {lista}")
 
+print(buscar_u_elemento([ -1, 0, -1, 0, -1, 1, -1, 0, -1, 1, 0],-1))
+print(maximo([-5,10,7,3,9,34]))
 print(minimo([-5,10000]))
+

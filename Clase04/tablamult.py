@@ -19,8 +19,8 @@ def tablamult(n):
     
     # Calculo
     for i in range(1,n+2):                  # hago n+2 porque tenia problemas que en el siguiente range() el indice no podia ser 0
-        print(f'{i-1:>4d}:',end='') # Imprimo el i por linea. Ej 1: 2: 3: 4:
-        print('%4d' %0 ,end = '')           # Esto es una truchada, creo yo que hay mejores formas pero no se me ocurrio.
+        print(f'{i-1:>2d}:',end='')         # Imprimo el i por linea. Ej 1: 2: 3: 4:
+        print('%6d' %0 ,end = '')           # Esto es una truchada, creo yo que hay mejores formas pero no se me ocurrio.
         
         for r in range(0, n*i ,i):
             i -= 1                          # resto lo que antes le sume, ya que i no podia ser 0 antes pero ahora si necesito que sea 0

@@ -7,7 +7,6 @@ Created on Thu Aug 25 15:05:46 2022
 import csv
 import sys
 from collections import Counter
-from pprint import pprint
 
 #%%
 # Esta funcion toma un archivo y un parque y devuelve toda la informacion de las lineas del parque

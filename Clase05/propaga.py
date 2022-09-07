@@ -13,7 +13,7 @@ def propagar(lista):
     '''
     listaMenosUno = []
     newArr = []
-    f = 0               # variable bandera
+    valor = 0               # De esto dependera si se agrega 1s o 0s
     s = 0
     
     #----------------------------
@@ -26,22 +26,25 @@ def propagar(lista):
     #----------------------------
     
     #----------------------------
-    for n in range(len(listaMenosUno)):
+    for n, indexMenosUno in enumerate(listaMenosUno):
         for i in range(len(lista)):
-            if n>0:                     #Sin este if no leeria si hay un 1 en la primera posición.
-                i = listaMenosUno[n-1]
-            while (i < listaMenosUno[n]):
+            if n>0:                     # Sin este if no leeria si hay un 1 en la primera posición.
+                i = s                   # Utilizo esto para que solo recorra entre los índices de menos uno, de otra forma recorreria varias veces todo el array.
+            while (i < indexMenosUno):
                 if lista[i] == 1:
-                    f = 1               # Si encuentra un 1, cambio la bandera a 1. Sino seguira siendo 0.    
+                    valor = 1               # Si encuentra un 1, cambio el valor a 1. Sino seguira siendo 0.
                 i+=1
-            break;                      # Utilizo break para que el programa no corra innecesariamente. Si sale del while no es necesario que siga recorriendo el array.              
-        while (s < listaMenosUno[n]):
-            newArr.append(f)            # Agrego f (puede ser 0 o 1) hasta el proximo indice de -1
+            break;                      # Utilizo break para que el programa no corra innecesariamente. Si sale del while no es necesario que siga recorriendo el array.
+            
+        while (s < indexMenosUno):
+            newArr.append(valor)            # Agrego el valor (puede ser 0 o 1) hasta que encuentre -1
             s += 1
-        if (listaMenosUno[n] != listaMenosUno[-1]):     # Si este no se encuentra en el extremo pasado del array
-            newArr.append(-1)                           # Agrego un -1 luego de agregar 1s o 0s.
-        s = listaMenosUno[n]+1
-        f = 0                           # Reseteo la variable bandera
+            
+        if (indexMenosUno != listaMenosUno[-1]):     # Si este no se encuentra en el extremo pasado del array
+            newArr.append(-1)                        # Agrego un -1 luego de agregar 1s o 0s.
+            
+        s = indexMenosUno+1                 # Declaro s con el proximo valor a comparar
+        valor = 0                           # Reseteo el valor a 0. Cambiará si encuentra un 1 entre este índice de -1 y el siguiente.
     #----------------------------
     print(newArr)
     return newArr
@@ -51,4 +54,4 @@ propagar([ 0, 0, 0,-1, 1, 0, 0, 0,-1, 0, 1, 0, 0])
 propagar([ 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0])
 propagar([ 0, 0, 0,0, 0, 0, 0, 0,-1, 1, 0])
 propagar([ 1, 0,-1, 0,0, 0, 0, 0, 0,-1, 1, 0])
-propagar([ 0, 1,-1, 0,0, 0, 0, 0, 0,-1, 1, 0])
+propagar([ -1, -1,-1, -1,0, -1, 1, 0, -1,-1, 1, 1])

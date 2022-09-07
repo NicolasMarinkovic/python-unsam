@@ -54,6 +54,7 @@ nombres = {s['nombre'] for s in camion}
 camion_precios = {nombre: precios[nombre] for nombre in nombres}
 #{'Caqui': 105.46, 'Durazno': 73.48, 'Lima': 40.22, 'Mandarina': 80.89, 'Naranja': 106.28}
 
+camion = [{ ncolumna: row[index] for ncolumna, index in zip(select, indices)} for row in rows]
 
 #----------------------------
 # Ejemplos usando informe.py
