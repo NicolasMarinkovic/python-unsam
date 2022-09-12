@@ -11,9 +11,10 @@ def generar_punto():
     x = random.random()
     y = random.random()
     if pow(x,2) + pow(y,2) < 1:
-        return x,y
+        return True
+    return False
     
 #%%
-N = 10000
+N = 1000000
 G = sum([generar_punto() for i in range(N)])
-prob = G/(N)
+pi = 4*G/(N)
