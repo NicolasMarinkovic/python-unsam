@@ -1,5 +1,5 @@
 # Se ven detalles técnicos sobre cómo hacer que la salida por pantalla sea más amena para el usuario
-
+#%%
 # Códigos de formato
 
 #Lo códigos de formato (lo que va luego de : dentro de {}) son similares a
@@ -30,7 +30,7 @@ f'{nombre:<10s} {cajones:<10d} {precio:>10.2f}'
 value = 42863.1
 print(f'{value:*>16,.2f}')
 #*******42,863.10
-
+#%%
 # -------------------------------------------------
 # Formato a diccionarios
 
@@ -43,7 +43,7 @@ s = {
 
 print('{nombre:>10s} {cajones:10d} {precio:10.2f}'.format_map(s))
 #'       Naranja        100      91.10'
-
+#%%
 # -------------------------------------------------
 # Tambien existe el estilo tipo .format() pero es horrible.
 #Formato estilo C
@@ -58,7 +58,7 @@ print('{nombre:>10s} {cajones:10d} {precio:10.2f}'.format_map(s))
 #'3.14'
 
 # Tiene la dificultad de que hay que contar posiciones y todas las variables van juntas al final.
-
+#%%
 # -----------------------------------------------
 
 #EL formato en cadenas se puede simplemente asignar a una variable.

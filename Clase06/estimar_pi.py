@@ -15,6 +15,7 @@ def generar_punto():
     return False
     
 #%%
-N = 1000000
+N = 10000
 G = sum([generar_punto() for i in range(N)])
 pi = 4*G/(N)
+print(pi)

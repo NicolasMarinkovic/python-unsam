@@ -21,7 +21,7 @@ def cumplenMismoDia():
         return 1
     return 0
 
-N = 100000
+N = 10000
 G = sum([cumplenMismoDia() for i in range(N)])
 prob = G/(N)
 print(f'Hice un cálculo de {N} veces, dónde en {G} casos, dos o más personas cumplen años el mismo día.')
