@@ -207,11 +207,6 @@ print(a[b])
 no_hay = np.nonzero(a == 42)
 #(array([], dtype=int64), array([], dtype=int64))
 
-#%%
-# CREAR ARREGLOS USANDO DATOS EXISTENTES
-
-
-#SEGUIR EN OTRO .PY
 
 
 
