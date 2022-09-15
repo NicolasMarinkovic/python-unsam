@@ -36,11 +36,28 @@ arboleda = leer_arboles('../Data/arbolado-en-espacios-verdes.csv')
 H = [arbol['altura_tot'] for arbol in arboleda if (arbol['nombre_com'] == 'Jacarandá')]
 
 #%% Ejercicio 5.17
-HL = [(arbol['altura_tot'], arbol['diametro']) for arbol in arboleda if (arbol['nombre_com'] == 'Jacarandá')]
+HD = [(arbol['altura_tot'], arbol['diametro']) for arbol in arboleda if (arbol['nombre_com'] == 'Jacarandá')]
 
 #%% Ejercicio 5.18
 especies = ['Eucalipto', 'Palo borracho rosado', 'Jacarandá']
 diccionario_especies = medidas_de_especies(especies,arboleda)
 
-altos = np.array(diccionario_especies)
-plt.hist(altos,bins=25)
+#%%Ejercicio 6.10
+def mostrarAlturas(lista_de_alturas):
+    altos = [lista_de_alturas]
+    plt.hist(altos,bins=100)
+    plt.show()
+mostrarAlturas(H)
+#%%Ejercicio 6.11
+def scatter_hd(lista_de_pares):
+    H, D = [h for h, d in lista_de_pares], [d for h, d in lista_de_pares]
+
+    plt.scatter(D,H, s=D, c=H, alpha=0.5)
+    plt.xlabel("diametro (cm)")
+    plt.ylabel("alto (m)")
+    plt.title("Relación diámetro-alto para Jacarandás")
+    plt.show()
+    
+scatter_hd(HD)
+
+#%%Ejercicio 6.12
