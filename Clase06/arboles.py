@@ -6,7 +6,6 @@ Created on Fri Sep  2 11:21:03 2022
 """
 import csv
 import sys
-import os
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -25,7 +24,7 @@ def medidas_de_especies(especies,arboleda):
     diccionario = [{ especie: [
                         (arbol['altura_tot'], arbol['diametro']) for arbol in arboleda if (arbol['nombre_com'] == especie)] 
                     } for especie in especies]
-    return list(diccionario[2])
+    return diccionario
 
 #%%
 if(len(sys.argv) >= 2):
@@ -47,17 +46,35 @@ def mostrarAlturas(lista_de_alturas):
     altos = [lista_de_alturas]
     plt.hist(altos,bins=100)
     plt.show()
-mostrarAlturas(H)
-#%%Ejercicio 6.11
-def scatter_hd(lista_de_pares):
-    H, D = [h for h, d in lista_de_pares], [d for h, d in lista_de_pares]
+mostrarAlturas( np.array(H) )
 
-    plt.scatter(D,H, s=D, c=H, alpha=0.5)
-    plt.xlabel("diametro (cm)")
-    plt.ylabel("alto (m)")
-    plt.title("Relación diámetro-alto para Jacarandás")
-    plt.show()
+#%%Ejercicio 6.11
+# Recibe una tupla de pares y un color a modo clave valor
+def scatter_hd(lista_de_pares,color):
+    H, D = [h for h, d in lista_de_pares], [d for h, d in lista_de_pares]
     
-scatter_hd(HD)
+    if (color[1] == ''):
+        color[1] = (H)
+    
+    plt.scatter(D,H, s=D, c=color[1], alpha=0.5, label=color[0])
+    plt.xlabel("Diametro (cm)")
+    plt.ylabel("Alto (m)")
+    plt.title("Relación diámetro-alto para Árboles de CABA")
+    plt.xlim(0,150) 
+    plt.ylim(0,50)
+    plt.legend(loc='upper left')
+    plt.show()
+
+scatter_hd( np.array(HD) , ['Jacarandá',''])
+
 
 #%%Ejercicio 6.12
+colores = ['Blue','Red','Green']
+coloresXEspecie = list(zip(especies,colores))
+
+for i,x in enumerate(diccionario_especies):
+    for key in x:
+        scatter_hd( np.array(x[key]), coloresXEspecie[i])
+
+        
+
