@@ -72,6 +72,7 @@ scatter_hd( np.array(HD) , ['Jacarandá',''])
 colores = ['Blue','Red','Green']
 coloresXEspecie = list(zip(especies,colores))
 
+
 for i,x in enumerate(diccionario_especies):
     for key in x:
         scatter_hd( np.array(x[key]), coloresXEspecie[i])

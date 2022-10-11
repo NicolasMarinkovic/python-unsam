@@ -1,9 +1,9 @@
 # costo_camion.py
 # Archivo de ejemplo
 # Ejercicio de hipoteca
+import csv
 
 def costo_camion(nombre_archivo):
-    import csv
     costoTotal = 0
     with open(nombre_archivo, 'rt') as file:
         rows = csv.reader(file)

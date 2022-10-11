@@ -12,11 +12,10 @@ def costo_camion(nombre_archivo):
     with open(nombre_archivo, 'rt') as file:
         rows = csv.reader(file)
         next(rows)
-        for row in rows:
-            try:
-                costoTotal += int(row[1]) * float(row[2])
-            except ValueError:
-                print(f"Los datos están incompletos. Línea: {row}")
+        try:
+            costoTotal = sum(int(row[1]) * float(row[2]) for i,row in enumerate(rows))
+        except ValueError:
+            print("Los datos están incompletos.")
     return costoTotal
 
 if len(sys.argv) == 2:
@@ -27,4 +26,4 @@ else:
     # py .\camion_commandline.py ../Data/missing.csv
 
 costo = costo_camion(nombre_archivo)
-print('Costo total:', costo)
+print('Costo total: $', costo)

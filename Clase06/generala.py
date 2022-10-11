@@ -53,10 +53,10 @@ def nuevoTiro(tiradaFinal):
 ######
 # Función general que integra todo
 def prob_generala():
-		tirada = tirar(5)
+		primerTirada = tirar(5)
 		tiradaFinal = []
 
-		agregarTirada(tiradaFinal,mayorCantidad(tirada))
+		agregarTirada(tiradaFinal,mayorCantidad(primerTirada))
 		nuevoTiro(tiradaFinal)
 		nuevoTiro(tiradaFinal)
 		
@@ -65,8 +65,8 @@ def prob_generala():
 
 N = 10000
 G = sum([prob_generala() for i in range(N)])
-prob = G/(N*3) # multiplico por 3 porque siempre hago 3 tiradas.
-print(f'Tiré {N*3} veces, de las cuales {G} logré sacar generalas.')
-print(f'Podemos estimar la probabilidad de sacar generala en 3 turnos mediante {prob:.6f}.')
+prob = G/(N) 
+print(f'Tiré {N} veces, de las cuales {G} logré sacar generalas.')
+print(f'Podemos estimar la probabilidad de sacar generala en 3 turnos mediante {prob:.3f}.')
 
 
