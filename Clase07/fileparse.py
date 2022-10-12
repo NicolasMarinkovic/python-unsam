@@ -8,7 +8,7 @@ Created on Sun Oct  9 19:57:05 2022
 # fileparse.py
 import csv
 
-def parse_csv(nombre_archivo):
+def parse_csv(nombre_archivo : str, select = None, types = None , has_headers= True) -> dict:
     '''
     Parsea un archivo CSV en una lista de registros
     '''
@@ -16,15 +16,32 @@ def parse_csv(nombre_archivo):
         rows = csv.reader(f)
 
         # Lee los encabezados
-        headers = next(rows)
+        if has_headers:
+            headers = next(rows)
+        
+        if select:
+            indices = [headers.index(header) for header in headers]
+            headers = select
+        
         registros = []
         for row in rows:
             if not row:    # Saltea filas sin datos
                 continue
-            registro = dict(zip(headers, row))
-            registros.append(registro)
+            
+            if select:
+                row = [row[index] for index in indices]
+            
+            if types:
+                row = [func(val) for func, val in zip(types, row) ]
+            
+            if has_headers:
+                registro = dict(zip(headers, row))
+                registros.append(registro)
+            else:
+                registros.append(tuple(row))
 
     return registros
 
-camion = parse_csv('../Data/camion.csv')
-
+cajones_retenidos = parse_csv('../Data/camion.csv', select=['nombre','cajones'])
+cajones_lote = parse_csv('../Data/camion.csv', select=['nombre', 'cajones'], types=[str, int])
+precios = parse_csv('../Data/precios.csv', types=[str,float], has_headers=False)
