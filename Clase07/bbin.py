@@ -4,11 +4,12 @@ Created on Wed Aug 31 15:53:35 2022
 
 @author: infolab
 """
-
+#%%
 def donde_insertar(lista, x, verbose = False):
     '''Utiliza Búsqueda binaria
     Precondición: la lista está ordenada
-    Devuelve el índice dónde se debe colocar x;
+    Devuelve el índice dónde se debe colocar x.
+    Devuelve True o False depende si lo encontró o no en la lista.
     '''
     if verbose:
         print(f'[DEBUG] izq |der |medio')
@@ -28,8 +29,33 @@ def donde_insertar(lista, x, verbose = False):
             
     if pos == -1:   # Si no encontro el valor
         if lista[medio] < x:  # Modifica si el indice va en el anterior o en el siguiente
-            return medio + 1
-        return medio
+            return medio + 1, False  
+        return medio, False
+    return pos, True
+#%%
+
+def insertar(lista, x, verbose = False):
+    '''Utiliza Búsqueda binaria
+    Precondición: la lista está ordenada
+    Devuelve el indice de x o lo inserta en la lista.
+    '''
+    
+    pos,encontrado = donde_insertar(lista, x)
+    newVar = []
+    
+    if not encontrado:   # Si no encontro el valor
+        while len(lista) > pos:
+            newVar.append(lista.pop())
+        print(newVar)
+        
+        lista.append(x)
+        
+        for x in range(len(newVar)):
+            lista.append(newVar.pop())
+    
     return pos
 
-print(donde_insertar([0,2,4,6,8], 11, verbose=True))
+lista = [0,2,4,6,8,10,12,14,16,18,20,22,24,26,28]
+print(insertar(lista, 43239, verbose=True))
+
+
