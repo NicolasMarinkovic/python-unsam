@@ -7,6 +7,11 @@ Created on Wed Nov  2 22:10:12 2022
 from datetime import datetime
 
 def vida_en_segundos(fecha_nac):
+    '''
+    Calcula la cantidad de segundos desde un fecha hasta hoy
+    pre: Una fecha formato DD/MM/YYYY
+    pos: total de segundos
+    '''
     fecha_act = datetime.now()
     
     date_object = datetime.strptime(fecha_nac, '%d/%m/%Y')
